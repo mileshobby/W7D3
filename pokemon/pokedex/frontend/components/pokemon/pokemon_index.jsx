@@ -1,4 +1,6 @@
 import React from 'react';
+import {PokemonIndexItem} from './pokemon_index_item';
+import { HashRouter, Route } from 'react-router-dom';
 
 class PokemonIndex extends React.Component{
   constructor(props){
@@ -11,14 +13,11 @@ class PokemonIndex extends React.Component{
 
   render(){
     const {pokemon} = this.props;
+    // Possibly add route path
+    const pokemonItems = pokemon.map(poke => <PokemonIndexItem key={poke.id} pokemon={poke} />);
     return (
       <ul>
-        {pokemon.map(poke=>
-          <li key={poke.id}>
-            {poke.name}
-
-            <img src={poke.image_url} height="40" width="40"></img>
-          </li>)}
+        {pokemonItems}
       </ul>
     );
   }
